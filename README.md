@@ -31,3 +31,13 @@ $('#input-example').val();
 
 // Native
 document.getElementById('input-example').value;
+
+## Возвращает все дочерние элементы выбранных элементов, а так же текстовое содержимое.
+
+// jQuery
+$('#iframe').contents();
+
+// Native
+document.getElementById('iframe').contentDocument;
+
+
