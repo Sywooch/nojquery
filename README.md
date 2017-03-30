@@ -71,6 +71,144 @@ document.querySelectorAll(':hover');
 
 ```
 
+### Ajax запрос методом GET
+
+```javascript
+
+// jQuery
+$.ajax('myservice/username', {
+    data: {
+        id: 'some-unique-id'
+    }
+})
+.then(
+    function success(name) {
+        alert('User\'s name is ' + name);
+    },
+
+    function fail(data, status) {
+        alert('Request failed.  Returned status of ' + status);
+    }
+);
+
+// Native
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'myservice/username?id=some-unique-id');
+xhr.onload = function() {
+    if (xhr.status === 200) {
+        alert('User\'s name is ' + xhr.responseText);
+    }
+    else {
+        alert('Request failed.  Returned status of ' + xhr.status);
+    }
+};
+xhr.send();
+
+```
+
+### Ajax запрос методом POST
+
+```javascript
+
+// jQuery
+var newName = 'John Smith';
+
+$.ajax('myservice/username?' + $.param({id: 'some-unique-id'}), {
+    method: 'POST',
+    data: {
+        name: newName
+    }
+})
+.then(
+    function success(name) {
+        if (name !== newName) {
+            alert('Something went wrong.  Name is now ' + name);
+        }
+    },
+
+    function fail(data, status) {
+        alert('Request failed.  Returned status of ' + status);
+    }
+);
+
+// Native
+var newName = 'John Smith',
+    xhr = new XMLHttpRequest();
+
+xhr.open('POST', 'myservice/username?id=some-unique-id');
+xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+xhr.onload = function() {
+    if (xhr.status === 200 && xhr.responseText !== newName) {
+        alert('Something went wrong.  Name is now ' + xhr.responseText);
+    }
+    else if (xhr.status !== 200) {
+        alert('Request failed.  Returned status of ' + xhr.status);
+    }
+};
+xhr.send(encodeURI('name=' + newName));
+
+```
+
+### Ajax отправка и получение JSON
+
+```javascript
+
+// jQuery
+$.ajax('myservice/user/1234', {
+    method: 'PUT',
+    contentType: 'application/json',
+    processData: false,
+    data: JSON.stringify({
+        name: 'John Smith',
+        age: 34
+    })
+})
+.then(
+    function success(userInfo) {
+        // userInfo will be a JavaScript object containing properties such as
+        // name, age, address, etc
+    }
+);
+
+// Native
+var xhr = new XMLHttpRequest();
+xhr.open('PUT', 'myservice/user/1234');
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.onload = function() {
+    if (xhr.status === 200) {
+        var userInfo = JSON.parse(xhr.responseText);
+    }
+};
+xhr.send(JSON.stringify({
+    name: 'John Smith',
+    age: 34
+}));
+
+```
+
+### Ajax кросс-доменный запрос
+
+```javascript
+
+// jQuery
+$.ajax('http://someotherdomain.com', {
+    method: 'POST',
+    contentType: 'text/plain',
+    data: 'sometext',
+    beforeSend: function(xmlHttpRequest) {
+        xmlHttpRequest.withCredentials = true;
+    }
+});
+
+// Native
+var xhr = new XMLHttpRequest();
+xhr.open('POST', 'http://someotherdomain.com');
+xhr.withCredentials = true;
+xhr.setRequestHeader('Content-Type', 'text/plain');
+xhr.send('sometext');
+
+```
+
 ### Возвращает или изменяет текстовое содержимое выбранных элементов страницы.
 
 ```javascript
