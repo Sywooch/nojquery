@@ -83,3 +83,11 @@ $el.clone();
 
 // Native
 el.cloneNode(true);
+
+## Находит дочерние элементы.
+
+// jQuery
+$el.children();
+
+// Native
+el.children;
