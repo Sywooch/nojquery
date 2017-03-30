@@ -40,4 +40,46 @@ $('#iframe').contents();
 // Native
 document.getElementById('iframe').contentDocument;
 
+## Возвращает или изменяет html-содержимое выбранных элементов страницы.
 
+// jQuery
+$el.html();
+
+// Native
+el.innerHtml;
+
+## Конвертирует строку с json-данными в javascript-объект.
+
+// jQuery
+$.parseJSON('{ example: 123 }');
+
+// Native
+
+JSON.parse('{ example: 123 }');
+
+## Добавляет класс(ы) выбранным элементам страницы.
+
+// jQuery
+$el.addClass('my-class');
+
+// Native IE10+
+el.classList.add('my-class');
+
+// NAtive IE8+
+el.className += ' my-class';
+
+## С помощью этих функций можно плавно показывать и скрывать выбранные элементы на странице, за счет изменения размера и прозрачности.
+
+// jQuery
+$el.hide();
+
+// Native
+el.style.display = 'none';
+
+## Метод создает копии выбранных элементов страницы и возвращает их в виде объекта.
+
+// jQuery
+$el.clone();
+
+// Native
+el.cloneNode(true);
