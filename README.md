@@ -2,6 +2,75 @@
 
 > Моя шпаргалка по использованию нативного js вместо jQuery 
 
+### Возвращает все элементы с заданным тегом 
+
+```javascript
+
+// jQuery
+$('div');
+
+// Native
+document.getElementsByTagName('div');
+
+```
+
+### Возвращает элемент с идентификатором
+
+```javascript
+
+// jQuery
+$('#id')
+
+// Native
+document.getElementById('id');
+
+```
+
+### Возвращает все элементы с заданным name
+
+```javascript
+
+// jQuery
+$('[name = name]')
+
+// Native
+document.getElementsByName('name');
+
+```
+
+### Возвращает все элементы с заданным классом
+
+```javascript
+
+// jQuery
+$('.class')
+
+// Native
+document.getElementsByClassName('class');
+
+```
+
+### возвращает не все, а только первый элемент, соответствующий CSS-селектору
+
+```javascript
+
+// Native
+document.querySelector(':hover');
+
+```
+
+### Возвращает все элементы удовлетворяющие CSS-селектору
+
+```javascript
+
+// jQuery
+$(':hover')
+
+// Native
+document.querySelectorAll(':hover');
+
+```
+
 ### Возвращает или изменяет текстовое содержимое выбранных элементов страницы.
 
 ```javascript
