@@ -2,6 +2,22 @@
 
 > Моя шпаргалка по использованию нативного js вместо jQuery 
 
+### Браузер полностью загрузил HTML, и построил DOM-дерево.
+
+```javascript
+
+// jQuery
+$(document).ready(function() { 
+    alert('ready');
+});
+
+// Native
+document.addEventListener("DOMContentLoaded", function(){
+    alert('Load');
+});
+
+```
+
 ### Возвращает все элементы с заданным тегом 
 
 ```javascript
