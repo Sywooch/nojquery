@@ -382,3 +382,25 @@ $el.children();
 el.children;
 
 ```
+
+### Обработка события.
+
+```javascript
+
+// jQuery
+
+$('.js-target-minus').on();
+
+$( "body" ).on( "click", "#id", function(e) {
+    console.log('test');
+    e.preventDefault();
+});
+
+// Native
+
+document.getElementById('id').addEventListener('click', function(e){
+    console.log('test');
+    e.preventDefault();
+});
+
+```
